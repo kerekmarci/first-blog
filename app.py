@@ -23,15 +23,37 @@ def index():
     return render_template('index.html', page_title="Home page")
 
 
+@app.route('/blog')
+def blog():
+    blogposts = mongo.db.blog_posts.find()
+    return render_template('blog.html', page_title="Blog posts", blogposts=blogposts)
+
+
+@app.route('/add')
+def add():
+    return render_template('add.html', page_title="Add a New Blog")
+
+
+@app.route('/postblog', methods=["GET", "POST"])
+def postblog():
+    if request.method == "POST":
+        newblog = {
+            "title": request.form.get("title"),
+            "subtitle": request.form.get("subtitle"),
+            "author": request.form.get("author"),
+            "content": request.form.get("blogcontent")
+        }
+
+        mongo.db.blog_posts.insert(newblog)
+        flash("Blog successfully posted!")
+        return redirect(url_for("blog"))
+
+    return render_template("add.html")
+
+
 @app.route('/about')
 def about():
     return render_template('about.html', page_title="About me & this page")
-
-
-@app.route('/blog')
-def post():
-    blogposts = mongo.db.blog_posts.find()
-    return render_template('blog.html', page_title="Blog posts", blogposts=blogposts)
 
 
 @app.route('/contact')

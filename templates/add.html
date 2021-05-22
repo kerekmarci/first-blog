@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7 text-center">
+            <h2>{{ page_title }}</h2>
+            <main class="mb-4">          
+                <p>Write your exciting blog post here, and share it with the world!</p>
+                    <div class="my-5">
+                        <form method="POST" action="{{ url_for('postblog') }}">
+                            <div class="form-floating">
+                                <input class="form-control" id="title" name="title" type="text" placeholder="Enter title here..." />
+                                <label for="title">Title</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="subtitle" name="subtitle" type="text" placeholder="Enter subtitle here..." />
+                                <label for="subtitle">Subtitle</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="author" name="author" type="text" placeholder="Enter your name here..." />
+                                <label for="author">Author</label>
+                            </div>
+                            <div class="form-floating">
+                                <textarea class="form-control" id="blogcontent" name="blogcontent" placeholder="Enter your message here..." style="height: 12rem"></textarea>
+                                <label for="blogcontent">Blog Content</label>
+                            </div>
+                            <br />
+                            <button class="btn btn-primary text-uppercase" type="submit">Submit</button>
+                        </form>
+                    </div>                
+            </main>
+        </div>   
+    </div>
+
+
+{% endblock %}
