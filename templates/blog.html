@@ -6,14 +6,14 @@
             <h2>{{ page_title }}</h2>
         </div>  
         <div class="col-md-10 col-lg-8 col-xl-7 text-center">
-            <p>
-                {% for blogpost in blogposts %}
-                    {% blogpost.title %}
-                    {% blogpost.subtitle %}
-                    {% blogpost.author %}
-                    {% blogpost.content %}
-                {% endfor %}
-            </p>
+                      
+            {% for blogpost in blogposts %}
+                {{ blogpost.title }}<br>
+                {{ blogpost.subtitle }}<br>
+                {{ blogpost.author }}<br>
+                {{ blogpost.content }}<br>
+            {% endfor %}          
+            
         </div>
     </div>
 

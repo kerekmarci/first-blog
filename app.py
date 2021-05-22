@@ -28,10 +28,10 @@ def about():
     return render_template('about.html', page_title="About me & this page")
 
 
-@app.route('/post')
+@app.route('/blog')
 def post():
     blogposts = mongo.db.blog_posts.find()
-    return render_template('post.html', page_title="Blog posts", blogposts=blogposts)
+    return render_template('blog.html', page_title="Blog posts", blogposts=blogposts)
 
 
 @app.route('/contact')
