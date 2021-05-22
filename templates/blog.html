@@ -12,7 +12,11 @@
                 <h4 class="subtitle-text">{{ blogpost.subtitle }}</h4>
                 <span class="pb-5"><i><u>Author: {{ blogpost.author }}</u></i><br></span>
                 <p class="mb-0">{{ blogpost.content }}</p><br>
-                <hr>
+                <button class="btn btn-primary text-uppercase" type="submit">Edit</button>
+                <button class="btn btn-danger text-uppercase" type="submit">Delete</button>
+                {% if loop.index != loop.length %}
+                    <hr>
+                {% endif %}
             {% endfor %}          
             
         </div>

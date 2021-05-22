@@ -1,6 +1,8 @@
 hr {
     margin-top: 30px;
     margin-bottom: 30px;
+    border: 1px solid var(--bs-teal);
+    opacity: 0.5;
 }
 
 .subtitle-text {
