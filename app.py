@@ -25,7 +25,7 @@ def index():
 
 @app.route("/blog")
 def blog():
-    blogposts = mongo.db.blog_posts.find()
+    blogposts = list(mongo.db.blog_posts.find())
     return render_template("blog.html", page_title="Blog posts", blogposts=blogposts)
 
 

@@ -20,8 +20,8 @@
                 <hr>
         </div>  
         
+        {% if blogposts|length > 0 %}              
         <div class="col-md-10 col-lg-8 col-xl-7 text-center">
-                      
             {% for blog in blogposts %}
                 <h2>{{ blog.title }}</h2>
                 <h4 class="subtitle-text">{{ blog.subtitle }}</h4>
@@ -39,7 +39,9 @@
             {% endfor %}          
             
         </div>
-        
+        {% else %}
+            <h4 class="subtitle-text text-center" style="color: rgb(219, 11, 11);">No Results Found</h4>
+        {% endif %}
     </div>
 
 
