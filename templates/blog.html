@@ -8,8 +8,18 @@
 
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7 text-center">
-            <!--<h2>{{ page_title }}</h2>-->
+            <h2>Search</h2>
+                <form action="{{ url_for('search') }}" method="POST">
+                    <label for="searchbox" class="form-label">Search in content</label>
+                    <input type="text" class="form-control" id="searchbox" name="searchbox" placeholder="Enter keyword here">
+                    <button type="submit" class="btn text-shadow">
+                        <i class="fas fa-search left"></i> Search
+                    </button>
+                    <a href="{{ url_for('blog') }}" class="btn" style="color: rgb(219, 11, 11);"><i class="fas fa-minus-circle"></i> Reset</a>
+                </form>
+                <hr>
         </div>  
+        {% if blogposts|length > 0 %}
         <div class="col-md-10 col-lg-8 col-xl-7 text-center">
                       
             {% for blog in blogposts %}
@@ -29,7 +39,11 @@
             {% endfor %}          
             
         </div>
+        {% else %}
+            <h4 class="subtitle-text text-center" style="color: rgb(219, 11, 11);">No Results Found</h4>
+        {% endif %}
     </div>
+
 
 
 {% endblock %}

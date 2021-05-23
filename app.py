@@ -123,6 +123,13 @@ def logout():
     return redirect(url_for("blog"))
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("searchbox")
+    blogposts = list(mongo.db.blog_posts.find({"$text": {"$search": query}} ))
+    return render_template("blog.html", page_title="Blog posts", blogposts=blogposts)
+
+
 @app.route("/about")
 def about():
     return render_template("about.html", page_title="About me & this page")
