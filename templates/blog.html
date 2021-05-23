@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% block title %}
+    Read blog posts!
+{% endblock %}
+
 {% block content %}
 
     <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -13,7 +18,7 @@
                 <span class="pb-5"><i><u>Author: {{ blog.author }}</u></i><br></span>
                 <p class="mb-0">{{ blog.content }}</p><br>
                 <a href="{{ url_for('edit_blog', blog_id=blog._id) }}" class="btn btn-primary text-uppercase">Edit</a>
-                <button class="btn btn-danger text-uppercase" type="submit">Delete</button>
+                <a href="{{ url_for('delete_blog', blog_id=blog._id) }}" class="btn btn-danger text-uppercase">Edit</a>
                 {% if loop.index != loop.length %}
                     <hr>
                 {% endif %}

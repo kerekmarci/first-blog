@@ -30,20 +30,37 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('index') }}">Home</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('blog') }}">Read Blog</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('postblog') }}">Write Blog</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('about') }}">About</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('contact') }}">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('login') }}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('register') }}">Register</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <!-- Flash messages-->
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert-secondary text-center" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
         <!-- Page Header-->
         <header class="masthead" style="background-image: url('{{ url_for('static', filename='images/blogbanner.jpg') }}')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                            <h1>Marton's Blog</h1>
-                            <span class="subheading">My practice with Flask</span>
+                            <h1>
+                                {% block title %}
+
+                                {% endblock %}
+                            </h1>
+                            <span class="subheading">This is my practice mini-blog website</span>
                         </div>
                     </div>
                 </div>
