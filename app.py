@@ -116,6 +116,13 @@ def login():
     return render_template("login.html", page_title="Log in")
 
 
+@app.route("/logout")
+def logout():
+    flash("Successfully logged out")
+    session.pop("user")
+    return redirect(url_for("blog"))
+
+
 @app.route("/about")
 def about():
     return render_template("about.html", page_title="About me & this page")

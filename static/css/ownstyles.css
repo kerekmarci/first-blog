@@ -12,6 +12,14 @@ hr {
 }
 
 #content {
-    height: 12rem;
-    
+    height: 12rem;    
+}
+
+.homeicon {
+    font-weight: 400 !important ;
+}
+
+#logged-in-user {
+    color: #7bc700;
+    font-weight: 800;
 }

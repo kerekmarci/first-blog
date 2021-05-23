@@ -18,7 +18,11 @@
                 <span class="pb-5"><i><u>Author: {{ blog.author }}</u></i><br></span>
                 <p class="mb-0">{{ blog.content }}</p><br>
                 <a href="{{ url_for('edit_blog', blog_id=blog._id) }}" class="btn btn-primary text-uppercase">Edit</a>
-                <a href="{{ url_for('delete_blog', blog_id=blog._id) }}" class="btn btn-danger text-uppercase">Edit</a>
+                
+                {% if session.user %}
+                    <a href="{{ url_for('delete_blog', blog_id=blog._id) }}" class="btn btn-danger text-uppercase">Delete</a>
+                {% endif %}
+
                 {% if loop.index != loop.length %}
                     <hr>
                 {% endif %}
