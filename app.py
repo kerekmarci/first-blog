@@ -148,7 +148,25 @@ def profile(username):
         {"username": session["user"]})["username"]
     if session["user"]:
         return render_template("profile.html", page_title="My profile", username=username)
+    
     return redirect(url_for("login"))
+
+
+@app.route("/upload", methods=["GET", "POST"])
+def upload():
+    if 'profile_image' in request.files:
+        profile_image = request.files['profile_image']
+        mongo.save_file(profile_image.filename, profile_image)
+        # user_id = mongo.db.users.find_one({"_id": ObjectId(user_id)}) 
+        mongo.db.users.insert({"username" : session["user"], 
+            "profile_image_name" : profile_image.filename})
+    
+    return 'Done!'
+
+
+@app.route('/file/<filename>')
+def file(filename):
+    return mongo.send_file(filename)
 
 
 if __name__ == '__main__':

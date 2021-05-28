@@ -10,7 +10,7 @@
         <p>Your name: {{ username }}</p>
         <p>Upload profile picture: </p>
     </div>
-    <form method="POST" action="{{ url_for('profile', username=session['user']) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
         <input type="file" name="profile_image">
         <input type="submit">
     </form>
