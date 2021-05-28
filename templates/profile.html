@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Your profile
+{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h2>Welcome {{ username }}!</h2>
+        <p>Your name: {{ username }}</p>
+        <p>Upload profile picture: </p>
+    </div>
+    <form method="POST" action="{{ url_for('profile', username=session['user']) }}" enctype="multipart/form-data">
+        <input type="file" name="profile_image">
+        <input type="submit">
+    </form>
+    
+{% endblock %}
