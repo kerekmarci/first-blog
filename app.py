@@ -79,12 +79,13 @@ def register():
 
         if existing_user:
             flash("Username already exists. Try to log in")
-            return redirect(url_for("login"))
+            return redirect(url_for("login"))      
 
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
-        }
+            "password": generate_password_hash(request.form.get("password")),            
+        }            
+
         mongo.db.users.insert_one(register)
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
@@ -146,6 +147,7 @@ def contact():
 def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    
     if session["user"]:
         return render_template("profile.html", page_title="My profile", username=username)
     
@@ -157,9 +159,7 @@ def upload():
     if 'profile_image' in request.files:
         profile_image = request.files['profile_image']
         mongo.save_file(profile_image.filename, profile_image)
-        # user_id = mongo.db.users.find_one({"_id": ObjectId(user_id)}) 
-        mongo.db.users.insert({"username" : session["user"], 
-            "profile_image_name" : profile_image.filename})
+        # mongo.db.users.update({"username": "teszt7"}, {"$set":{"hello": profile_image.filename}})
     
     return 'Done!'
 
@@ -167,6 +167,12 @@ def upload():
 @app.route('/file/<filename>')
 def file(filename):
     return mongo.send_file(filename)
+
+
+@app.route("/update", methods=["GET", "POST"])
+def update():
+    mongo.db.users.update({"username": "teszt7"}, {"$set":{"hello": "szia"}})
+    return "Updated!"
 
 
 if __name__ == '__main__':

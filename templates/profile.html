@@ -8,11 +8,14 @@
     <div class="text-center">
         <h2>Welcome {{ username }}!</h2>
         <p>Your name: {{ username }}</p>
+        <p>Your image: {{ photo }} </p>
         <p>Upload profile picture: </p>
     </div>
-    <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
-        <input type="file" name="profile_image">
-        <input type="submit">
-    </form>
+    <div class="text-center">
+        <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+            <input type="file" name="profile_image">
+            <input type="submit">
+        </form>
+    </div>
     
 {% endblock %}

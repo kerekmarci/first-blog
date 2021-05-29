@@ -12,7 +12,7 @@
             <main class="mb-4">          
                 <p>Register your new account here to be able to delete your posts.</p>
                     <div class="my-5">
-                        <form method="POST" action="{{ url_for('register') }}">
+                        <form method="POST" action="{{ url_for('register') }}" >
                             <div class="form-floating">
                                 <input class="form-control" id="username" name="username" type="text" placeholder="Enter username here..." />
                                 <label for="username">Username</label>
@@ -20,8 +20,8 @@
                             <div class="form-floating">
                                 <input class="form-control" id="password" name="password" type="password" placeholder="Enter password here..." />
                                 <label for="password">Password</label>
-                            </div>                           
-                            
+                            </div>                                      
+                          
                             <br />
                             <button class="btn btn-primary text-uppercase" type="submit">Register</button>
                         </form>
